@@ -3,7 +3,7 @@
 #### University of Santo Tomas, Electronics Engineering Department
 ---
 ## Introduction
-The second experiment for ECE 2112: Advanced Computer Programming and Algorithms contains library name "Pandas". For this experiment, the programmer will deal with Python Data Analysis or also known as Pandas. It is the core Python library that provides high-performance, easy-to-use data structures and data analysis tools for the Python programming language
+The third experiment for ECE 2112: Advanced Computer Programming and Algorithms contains library name "Pandas". For this experiment, the programmer will deal with Python Data Analysis or also known as Pandas. It is the core Python library that provides high-performance, easy-to-use data structures and data analysis tools for the Python programming language
 
 ## Intended Learning Outcomes
 This experiment deals with two learning outcomes, mainly:
