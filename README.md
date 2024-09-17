@@ -1,60 +1,64 @@
-# Experiment 2: Numerical Python (NumPy)
+# Experiment 3: Python Data Analysis (pandas)
 ## Course: ECE 2112 - Advanced Computer Programming and Algorithms
 #### University of Santo Tomas, Electronics Engineering Department
 ---
 ## Introduction
-The second experiment for ECE 2112: Advanced Computer Programming and Algorithms contains library name "NumPy". For this experiment, the programmer will deal with Numerical Python or also known as NumPy. It is the core library for scientific computing in Python. It provides a high-performance multidimensional array object and tools for working with arrays. 
+The second experiment for ECE 2112: Advanced Computer Programming and Algorithms contains library name "Pandas". For this experiment, the programmer will deal with Python Data Analysis or also known as Pandas. It is the core Python library that provides high-performance, easy-to-use data structures and data analysis tools for the Python programming language
 
 ## Intended Learning Outcomes
 This experiment deals with two learning outcomes, mainly:
-To identify the codes and functions incorporated in the Numpy library.
-To be able to apply and use the different codes and functions in creating a Python program using a Numpy library.
+- To identify the codes and functions incorporated in the Pandas library
+- To be able to apply and use the different codes and functions in creating a Python program using a Pandas library
 
 ## Summary of Problems
-#### Normalization Problem
-- Background: Normalization is one of the most basic preprocessing techniques in data analytics. This involves centering and scaling process. Centering means   subtracting the data from the mean and scaling means dividing with its standard deviation. Mathematically, normalization can be expressed as: </br>
-![image](https://github.com/user-attachments/assets/b1ed4767-6e27-4403-b9a2-fe1ab05bb65d)
+### Instructions: 
+For this programming assignment, download the following file and save to your default user folder: http://bit.ly/Cars_file
 
-- Instructions: Create a random 5x5 ndarray and store it to variable X. Normalize X. The normalized ndarray file should be named as X_normalized.npy
-
-- Code sample:
-```
-#Import numpy library
-import numpy as np
-
-# Create a random 5x5 ndarray
-X = np.random.rand(5, 5)
-
-# Calculate the mean and standard deviation
-mean_X = X.mean()
-std_X = X.std()
-
-# Normalize the array
-X_normalized = (X - mean_X) / std_X
-
-# Save as X_normalized.npy and print result
-np.save('X_normalized.npy', X_normalized)
-print (X_normalized)
-```
-#### Divisible By 3 Problem
-- Instructions: Create the following 10x10 ndarray which are the squares of the first 100 positive integers. From this ndarray, determine all the elements that are divisible by 3. Save the file of the result as div_by_3.npy.
-
-![image](https://github.com/user-attachments/assets/ab5173d4-b6e7-4692-b640-a8067bc32ff8)
+### Problem 1
+- Using knowledge obtained from the experiment and demonstrations:
+    - Load the corresponding .csv file into a data frame named cars using pandas
+    - Display the first five and last five rows of the resulting cars.
 
 - Code sample:
 ```
-#Import numpy library
-import numpy as np
+#Import panda library
+import pandas as pd
 
-# Create a 10x10 array of squares of the first 100 positive integers
-A = np.arange(1, 101).reshape(10, 10) ** 2
+#Reading and loading csv file into a data frame
+cars = pd.read_csv('cars.csv')
+slice = cars.head()
 
-# Find elements divisible by 3
-div_by_3 = A[A % 3 == 0]
+#Displaying first and last 5 rows of the resulting cars
+head_tail_slice = list(range(5))+list(range(-5,0))
+cars.iloc[head_tail_slice]
+```
+### Problem 2
+- Using the dataframe cars in problem 1, extract the following information using subsetting, slicing and indexing operations.
+    - Display the first five rows with odd-numbered columns (columns 1, 3, 5, 7...) of cars.
+    - Display the row that contains the ‘Model’ of ‘Mazda RX4’.
+    - How many cylinders (‘cyl’) does the car model ‘Camaro Z28’ have?
+    - Determine how many cylinders (‘cyl’) and what gear type (‘gear’) do the car models ‘Mazda RX4 Wag’, ‘Ford Pantera L’ and ‘Honda Civic’ have
 
-# Save as div_by_3.npy and print result
-np.save('div_by_3.npy', div_by_3)
-print (div_by_3)
+- Code sample:
+```
+#Import panda library
+import pandas as pd
+
+#Reading and loading csv file into a data frame
+cars = pd.read_csv('cars.csv')
+
+#Displaying first 5 odd-numbered columns of the resulting cars
+cars.iloc[:5,::2]
+
+#Displaying the row that contains the ‘Model’ of ‘Mazda RX4’
+cars.loc[cars['Model']=='Mazda RX4']
+
+#Displaying the number of cylinders in the car model "Camaro Z28" have.
+cars.loc[cars['Model']=='Camaro Z28',['Model', 'cyl']]
+
+#Displaying the number of cylinders and type of gear in the car model "Mazda RX4 Wag."
+models = cars.loc[(cars['Model'] == 'Mazda RX4 Wag') | (cars['Model'] == 'Ford Pantera L') | (cars['Model'] == 'Honda Civic')]
+models[['Model', 'cyl', 'gear']]
 ```
 ---
 ## How can this be related to real-life?
@@ -74,14 +78,15 @@ When coding, it is best to do practices that would help you efficiently write co
 - Be consistent with the codes.
 ---
 ## Files Included
-- Tabora-EXPERIMENT 2.ipynb: Jupyter notebook with the Python code.
-- X_normalized.npy: Output file containing the normalized ndarray.
-- div_by_3.npy: Output file containing elements divisible by 3.
+- Tabora-Experiment-3.ipynb: Jupyter notebook with the Python code.
+- cars.csv: Excel data for given problems.
+- Tabora_Pandas-P1.py: Output file containing problem 1.
+- Tabora_Pandas-P2.py: Output file containing problem 2.
 ---
 ## Software and Library Used
 - Python (version 3.x)
 - Jupyter Notebook
-- NumPy (Numerical Python Library)
+- paandas (Python Data Analysis Library)
 ---
 ## Author
 - Carl Johnsen M. Tabora
